@@ -27,8 +27,7 @@ public class Assignment2 {
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		//driver.get("https://erail.in/trains-between-stations/ghaziabad-GZB/new-delhi-NDLS");
-		driver.get("https://www.amazon.com/");
+		driver.get("https://www.amazon.com/"); // Open Amazon URL
 
 	}
 
@@ -37,29 +36,22 @@ public class Assignment2 {
 
 		try{
 
-			WebElement search = driver.findElement(By.xpath("//*[@placeholder='Search Amazon']"));
-			search.sendKeys("iphone");
-			//search.sendKeys(Keys.RETURN);
+			WebElement search = driver.findElement(By.xpath("//*[@placeholder='Search Amazon']")); // Define webElement for search testxbox 
+			search.sendKeys("iphone"); // Search iphone in Amazon UI
 			WebElement search_btn = driver.findElement(By.id("nav-search-submit-button"));
-			search_btn.click();
+			search_btn.click(); // Click on search icon
 			Thread.sleep(2000);
-
-			// 1 Way
-
+			// Get first result of search Apple iPhone
 			WebElement restultTest = driver.findElement(By.cssSelector("div[class='s-widget-container s-spacing-small s-widget-container-height-small celwidget slot=MAIN template=SEARCH_RESULTS widgetId=search-results_1'] span[class='a-size-medium a-color-base a-text-normal']"));
 			getSearchTextValue = restultTest.getText();
 			System.out.println(getSearchTextValue);
+			// Validate text pple iPhone
 			Assert.assertTrue(getSearchTextValue.contains("Apple iPhone"));
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-	}
-
-	void waitForLoad(driver) {
-		new WebDriverWait(driver, 30).until((ExpectedCondition<Boolean>) driver ->
-				((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
 	}
 
 	@After

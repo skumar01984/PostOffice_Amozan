@@ -32,13 +32,14 @@ public class Assignment1 extends Config {
 	List<String> resultList = null;
 	static String exprValue;
 	WebDriver driver;
+
+	//  GET Math API expression test result
 	public String getMathAPI(String value) {
 		response = given().auth().none().header("Content-Type", "application/json").contentType(ContentType.JSON).when()
 				.get(mathURL + "?expr=" + value);
 
 		System.out.println(response);
 
-		//getresult = response.then().statusCode(200).extract().body().asString();
 		getresult = response.body().asString();
 
 		System.out.println("Result : " + getresult);
@@ -48,15 +49,18 @@ public class Assignment1 extends Config {
 	
 	@Before
 	public void postMathAPI() {
+		// Print on console payload expresstion data from util/config.java file
 		System.out.println(mathJsonExpressionData);
+		// POST payload expresstion data from util/config.java file
 		response = given().auth().none().header("Content-Type", "application/json").contentType(ContentType.JSON).when()
 				.body(mathJsonExpressionData).post(mathURL);
 		
-		//System.out.println(response);
+		// Validate URI status code
 		Assert.assertEquals(response.getStatusCode(), 200);
 
 		result = response.body().asString();
 
+		// Print on console updated result
 		System.out.println("Result : " + result);
 		
 
@@ -74,19 +78,18 @@ public class Assignment1 extends Config {
 		// 1 Way
 		for (int i=0; i<resultList.size(); i++) {
 		
+		// Fetching expression value
 		exprValue = jsonPath.getString("result["+i+"]");
 		String getExpressionValue = getMathAPI(resultList.get(i));
 		
-		/*if (getExpressionValue.equals(exprValue)) {
-			System.out.println("Expression of list is correct");
-		}*/
-		
+		// Validate Expression of list is correct
 		Assert.assertTrue(getExpressionValue.equals(exprValue));
 		
 	
 	}
 	
-		// 2 way
+		// 2 way - Uncoment and validate result
+
 		/*for (int i=0; i<resultList.size(); i++) {
 			
 			String exprValue = getMathAPI(resultList.get(i));
