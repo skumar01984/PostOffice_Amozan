@@ -2,13 +2,13 @@
 
 The project assingment is configure based on the maven project, and used TestNG as framework and used Selenium Java, and RestAssured API for both UI and API automation. There is not required to download api jar externaly. 
 
-# Pre configurstion:
+# Pre configuration:
 
 1. JDK 1.8 
 2. Require latest crome driver under \PostOffice_Amozan\src\test\resources\drivers folder to run UI script on the browser.
 3. Junit 4.12
 
-# To setup project use below github repositr=ory
+# To setup project use below github repository
 https://github.com/skumar01984/PostOffice_Amozan.git
 
 There are two asingments.
