@@ -45,7 +45,7 @@ public class Assignment2 {
 			WebElement restultTest = driver.findElement(By.cssSelector("div[class='s-widget-container s-spacing-small s-widget-container-height-small celwidget slot=MAIN template=SEARCH_RESULTS widgetId=search-results_1'] span[class='a-size-medium a-color-base a-text-normal']"));
 			getSearchTextValue = restultTest.getText();
 			System.out.println(getSearchTextValue);
-			// Validate text pple iPhone
+			// Validate text Apple iPhone
 			Assert.assertTrue(getSearchTextValue.contains("Apple iPhone"));
 
 		} catch (Exception e) {
